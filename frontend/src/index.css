@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------ */
+/* T0rdix design tokens — RGB triplets consumed by tailwind.config.js */
+/* Dark-first; light theme flips via the `.light` class on <html>.    */
+/* ------------------------------------------------------------------ */
+
+@layer base {
+  :root,
+  .dark {
+    --c-background: 16 19 15;
+    --c-surface: 23 29 22;
+    --c-surface-2: 28 35 26;
+    --c-surface-3: 35 44 32;
+    --c-line: 43 52 40;
+    --c-content: 244 246 241;
+    --c-muted: 166 179 160;
+    --c-faint: 110 122 105;
+    --c-primary: 107 143 62;
+    --c-primary-hover: 125 166 74;
+    --c-primary-soft: 34 45 27;
+    --c-primary-foreground: 255 255 255;
+    --c-accent: 167 201 87;
+    --c-success: 52 211 153;
+    --c-warning: 251 191 36;
+    --c-danger: 244 63 94;
+  }
+
+  .light {
+    --c-background: 250 251 248;
+    --c-surface: 255 255 255;
+    --c-surface-2: 243 246 240;
+    --c-surface-3: 235 241 231;
+    --c-line: 216 226 208;
+    --c-content: 28 36 26;
+    --c-muted: 95 107 88;
+    --c-faint: 151 163 146;
+    --c-primary: 107 143 62;
+    --c-primary-hover: 92 125 53;
+    --c-primary-soft: 237 243 228;
+    --c-primary-foreground: 255 255 255;
+    --c-accent: 79 122 42;
+    --c-success: 5 150 105;
+    --c-warning: 202 138 4;
+    --c-danger: 225 29 72;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-background text-content font-sans antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04";
+  }
+
+  ::selection {
+    background: rgb(var(--c-primary) / 0.4);
+  }
+
+  /* Slim, dark scrollbars — developer-tool aesthetic */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--c-surface-3)) transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: rgb(var(--c-surface-3));
+    border-radius: 8px;
+  }
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--c-primary));
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Frosted glass panel, the core T0rdix surface */
+  .glass-card {
+    @apply bg-surface/70 backdrop-blur-xl border border-line/70 rounded-2xl;
+  }
+
+  .kbd {
+    @apply inline-flex h-5 min-w-5 items-center justify-center rounded border border-line/80
+      bg-surface-2 px-1.5 font-mono text-[10px] font-medium text-muted;
+  }
+
+  /* Method chips used across mock studio & testing */
+  .method-chip {
+    @apply inline-flex items-center justify-center rounded-md px-1.5 py-0.5 font-mono text-[10px]
+      font-bold tracking-wider;
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+
+  /* Subtle top-edge sheen for hero panels */
+  .top-glow {
+    background-image:
+      radial-gradient(600px 160px at 50% -40px, rgb(var(--c-primary) / 0.14), transparent 70%);
+  }
+
+  .dot-grid {
+    background-image: radial-gradient(rgb(var(--c-line)) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+}
+
+/* Monaco tweaks so it blends into dark surfaces */
+.monaco-editor,
+.monaco-editor-background,
+.monaco-editor .margin {
+  background-color: transparent !important;
+}
