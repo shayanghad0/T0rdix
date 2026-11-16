@@ -1,0 +1,16 @@
+{
+  "name": "t0rdix",
+  "version": "1.0.0",
+  "private": true,
+  "description": "T0rdix — all-in-one open-source developer workspace: secret manager, mock studio, API testing, OpenAPI tools, fake data, team workspace and CLI.",
+  "license": "MIT",
+  "scripts": {
+    "setup": "npm run install:all",
+    "install:all": "npm --prefix backend install && npm --prefix frontend install && npm --prefix cli install",
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "build": "npm --prefix backend run build && npm --prefix frontend run build && npm --prefix cli run build",
+    "typecheck": "npm --prefix backend run typecheck && npm --prefix frontend run typecheck",
+    "cli": "npm --prefix cli run build && node cli/dist/index.js"
+  }
+}

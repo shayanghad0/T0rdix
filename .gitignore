@@ -1,1 +1,29 @@
 prompt
+
+# dependencies
+node_modules/
+**/node_modules/
+
+# builds
+dist/
+build/
+**/dist/
+
+# env & secrets
+.env
+.env.local
+**/.env
+
+# logs
+*.log
+npm-debug.log*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# runtime database (seeded automatically on first run)
+database/*.json
