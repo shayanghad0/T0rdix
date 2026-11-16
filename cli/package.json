@@ -1,0 +1,26 @@
+{
+  "name": "t0rdix-cli",
+  "version": "1.0.0",
+  "description": "T0rdix CLI — secrets sync, mock serving and API scaffolding from your terminal",
+  "bin": {
+    "t0rdix": "dist/index.js"
+  },
+  "main": "dist/index.js",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.17"
+  },
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "tsx": "^4.16.2",
+    "typescript": "^5.5.4"
+  }
+}
